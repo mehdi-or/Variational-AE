@@ -2,7 +2,7 @@
 ## Introduction
 The sensory information coming form outside world is encoded by networks of neurons in the brain. Neural decoding is an emerging field in neural science that tries to decode the information that is already encoded by the brain. This helps to better understand how the brain processes the sensory information to make sense form the outside world. This method has different applications. For instance, Taschereau-Dumouchel et.al used this technique to unconsciously rewire the brain of patients who have phobia associated with a specific animal/object in order to treat their anxiety disorder[1] (eg. snake, spider). To build this decoder, typically, the feared object is shown to the subject while the fMRI images are being acquired. One drawback of this techniques is that patients are feared from those objects and as a result of that they may withdraw from the treatment plan. In order to address this issue, researchers used a newly developed techniques called hyperalignment [2, 3]. This way, it is possible to obtain the relevant representation of feared objects by showing them to the surrogate subjects. The other application can be using the information from different regions of the brain to implement decoding algorithms in order to find the categorical object representation of different regions of the brain.
 
-![caption : fig 1](/images/1.png)
+![caption : fig 1- Taschereau-Dumouchel et.al PNAS 2018](/images/1.png)
 figure 1
 
 ## Method
