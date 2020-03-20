@@ -43,3 +43,12 @@ Following of the training, using the test-set, the activity of VT, PFC and featu
 
 ## 3.Result
 
+The Pearson correlation of predicted values of PFC and VT for the same trials  were obtained. Figure 5 shows an example of the correlation between predicted PFC and the actual PFC (here a Pearson correlation of 0.66). 
+
+![](/images/Figure_3.png)
+figure5.
+
+A cononical correlation analysis (CCA) with 20 components (the same number of feature in the bottleneck) was used to in order to evaluate the performance of this netwrok. As it can be seen in figure 6, the correlation of of the predicted PFC of the same trial is much lower (about 0.29). The mean value of the correlation between the actual vs predicted values, using CCA, was approximately 0.25 which was significantly lower than our noble network architecture which was approximately 0.65. These result shows that the performance of the VAEs-classifier network is better than CCA.
+
+![](/images/Figure_7.png)
+figure6.
