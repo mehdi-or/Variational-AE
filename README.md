@@ -14,17 +14,29 @@ figure 1- Taschereau-Dumouchel et.al PNAS 2018
 Multivoxel patterns from pre-frontal cortex (PFC) and ventral temporal cortex (VT) of each subject were selected. In order to investigate whether the data were contaminated between category change, a simple neural network architecture with one hidden layer that was used to build the decoder (figure 2). The number the features (voxels) in the impute layer was different for each person (due to the natural variation of the size of different areas of brain in different people), the number of the hidden units in hidden layer was 500 features and the output layer was defined by 40 different categories. The activation function for each layer was defined as the sigmoid function.
 One-Versus-all classification technique was used to decode voxels for each of 40 classes. To test the actual accuracy of the decoder, a five-fold cross-validation was used for each (training over 80% of the data and testing on 20% of the data for 5 times). The accuracy was considered as the mean of the ratio of the correct guesses to the total test exemplars.
 ![](/images/3.png)
-
 Figure 2.
 
-Since Neural Network is a mathematical algorithm which tries to minimize the error for the cost function, it is important to feed the feature to the algorithm in such a way that the corresponding outputs do not follow a specific patter. To break the reparative pattern in the mini-blocks, the exemplars were randomly shuffled across the entire 3600 exemplars for each subject. It was observed that most of wrong guesses occurs within a category change (the last exemplar of the former mini-black and the first exemplar of the later mini-block). This is probably due to the fact that in each TR, 2 images were shown to subjects and during the transition from a one mini-block to the other, the subject sees two pictures from two different categories. As a result, the scan during the transition from one class to the other will contain some voxels that are related to former class and some that are related to later class. In order to test this hypothesis, we reconstructed 5 different modified datasets as follow:
+Since Neural Network is a mathematical algorithm which tries to minimize the error for the cost function, it is important to feed the feature to the algorithm in such a way that the corresponding outputs do not follow a specific pattern. To break the repetitive pattern in the mini-blocks, the exemplars were randomly shuffled across the entire 3600 exemplars for each subject. It was observed that most of incorrect classification occur within a category change (the last exemplar of the former mini-black and the first exemplar of the later mini-block). This is probably due to the fact that in each TR, 2 images were shown to subjects and during the transition from a one mini-block to the other, the subject sees two pictures from two different categories. As a result, the scan during the transition from one class to the other will contain some voxels that are related to former class and some that are related to later class. In order to test this hypothesis, we reconstructed 5 different modified data-sets as follow:
 ##### 1. Removing only the last exemplar of each mini-block
 ##### 2. Removing only the fist exemplar of each mini-block
 ##### 3. Removing only the last and the first exemplar of each mini-block
 ##### 4. Removing one exemplar within each mini-block that is not the first of the last one (except those mini-block that has only two exemplars)
 ##### 5. Not removing any data
-Then we are able to find weather the accuracy for each of these newly reconstructed datasets (each group) is significantly different. In other words, is there a main effect on the accuracy due to the presence/absence of first and last exemplar of each mini-block?
-The other factor that can potentially influence the accuracy of the decoder is the region of the brain that we select the data from. To test this hypothesis, we looked at the PFC and VT cortex to see if there is a main effect due to the region of interest (ROI). 
-To test for theses hypotheses, a two-way repeated measures ANOVA can be used. The reason for choosing this test is that we have two factors within subjects, one is the ROI which has two factor levels (PFC and VT) and the other factor is data removal (which has 5 factor levels). Then, we look at the accuracy of the decoder for all of the combinations of these factor levels in 10 of the participants so that we are able to see whether there is a main effect due to each factor. Also, we can test whether there is an interaction between the two factors.
+Then we are able to find weather the accuracy for each of these newly modified data-sets (each group) is significantly different. In other words, is there a main effect on the accuracy due to the presence/absence of first and last exemplar of each mini-block?
+The other factor that can potentially influence the accuracy of the decoder is the region of interest (ROI) in the brain (eg. PFC and VT).
+As depicted in figure 3, even though by removing the contaminated trials we lose almost 25% of the data, we get a higher accuracy than not removing any data. Also, it is evident that removing a good trial will decrease the classification accuracy.	
 ![](/images/contamination.jpg)
 Figure 3.
+
+Due to the contamination in the data, we decided to remove the last trial of the former mini-block just before the change in the category happens.
+
+    remove=np.zeros((len(labels0)))
+    for i in range(len(labels0)-1):
+        if labels0[i]!=labels0[i+1]:
+                remove[i] = 1 #removing first contamination (last expl from the 1st mini-block)
+                #remove[i+1] = 1 #removing second contamination
+    remove=np.array(np.where(remove == 1))
+    y = np.delete(y, remove, axis=0)
+    X = np.delete(X, remove, axis=0)
+    labels = np.delete(labels0, remove, axis=0) #removing contaminated data from labels
+    map2 = np.delete(map2labels, remove, axis=0) #updating the map for the labels
