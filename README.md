@@ -12,10 +12,10 @@ In order to prevent the overfitting of the data a regularization constant of  wa
 ![](/images/3.png)
 
 Since Neural Network is a mathematical algorithm which tries to minimize the error for the cost function, it is important to feed the feature to the algorithm in such a way that the corresponding outputs do not follow a specific patter. To break the reparative pattern in the mini-blocks, the exemplars were randomly shuffled across the entire 3600 exemplars for each subject. It was observed that most of wrong guesses occurs within a category change (the last exemplar of the former mini-black and the first exemplar of the later mini-block). This is probably due to the fact that in each TR, 2 images were shown to subjects and during the transition from a one mini-block to the other, the subject sees two pictures from two different categories. As a result, the scan during the transition from one class to the other will contain some voxels that are related to former class and some that are related to later class. In order to test this hypothesis, we reconstructed 5 different modified datasets as follow:
-### 1. Removing only the last exemplar of each mini-block
-### 2. Removing only the fist exemplar of each mini-block
-### 3. Removing only the last and the first exemplar of each mini-block
-### 4. Removing one exemplar within each mini-block that is not the first of the last one (except those mini-block that has only two exemplars)
+#### 1. Removing only the last exemplar of each mini-block
+#### 2. Removing only the fist exemplar of each mini-block
+#### 3. Removing only the last and the first exemplar of each mini-block
+#### 4. Removing one exemplar within each mini-block that is not the first of the last one (except those mini-block that has only two exemplars)
 ### 5. Not removing any data
 Then we are able to find weather the accuracy for each of these newly reconstructed datasets (each group) is significantly different. In other words, is there a main effect on the accuracy due to the presence/absence of first and last exemplar of each mini-block?
 The other factor that can potentially influence the accuracy of the decoder is the region of the brain that we select the data from. To test this hypothesis, we looked at the PFC and VT cortex to see if there is a main effect due to the region of interest (ROI). 
