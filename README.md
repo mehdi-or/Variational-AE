@@ -34,6 +34,7 @@ Due to the contamination in the data, the last trial of the former mini-block, j
 ### Network architecture
 In order to establish a the information flow between VT and PFC two variational auto-encoders (VAEs) were used to predict the voxel activities of PFC based on VT and vice versa. In order to force the network to encode the most relevant features in the bottleneck of the network, a simple classifier using a logistic regretion was used to classify each trial to one of the 40 classes. The arcitechture of the network is show in figure 4. The cost function for the VAEs were defined as Mean-Square-Error (MSE) and the cost function for the classifier was defines as Categorical Cross-Entropy (CCE). Then these cost function were trained simultaneously. After trying different number of features for the bottleneck of the network a feature number of 20 was considered for the bottleneck. 
 The activation function for the hidden layers was Tanh, for output layer of the VAEs was a linear function and for the output of the classifier was the soft-max function. In order to prevent of over-fitting a drop-out of 20% was defined after each hidden  layer.
+
 ![](/images/architecture.png)
 figure4.
 
