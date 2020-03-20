@@ -29,14 +29,3 @@ As depicted in figure 3, even though by removing the contaminated trials we lose
 Figure 3.
 
 Due to the contamination in the data, we decided to remove the last trial of the former mini-block just before the change in the category happens.
-
-    remove=np.zeros((len(labels0)))
-    for i in range(len(labels0)-1):
-        if labels0[i]!=labels0[i+1]:
-                remove[i] = 1 #removing first contamination (last expl from the 1st mini-block)
-                #remove[i+1] = 1 #removing second contamination
-    remove=np.array(np.where(remove == 1))
-    y = np.delete(y, remove, axis=0)
-    X = np.delete(X, remove, axis=0)
-    labels = np.delete(labels0, remove, axis=0) #removing contaminated data from labels
-    map2 = np.delete(map2labels, remove, axis=0) #updating the map for the labels
