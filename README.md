@@ -1,10 +1,11 @@
 # Dimentionality of feature space between pre-frontal cortex and Ventral temporal cortex using a hybrid netweork of variational auto encoders and a logistic classifier
-## Introduction
+## 1. Introduction
 Sensory information coming form outside world is encoded by networks of neurons in the brain. Neural decoding is an emerging field in neuroscience that tries to decode the information that is already encoded by the brain. This helps to better understand how the brain processes sensory information in order to evaluate the environment and make decisions accordingly. This method has different applications. For instance, Taschereau-Dumouchel et.al used this technique to unconsciously rewire the brain of patients who have phobia associated with a specific animal/object in order to treat their anxiety disorder[1] (eg. snake, spider). To build this decoder, typically, the feared object is shown to the subject while the fMRI images are being acquired. One drawback of this techniques is that patients are feared from those objects and as a result of that they may withdraw from the treatment plan. In order to address this issue, researchers used a newly developed techniques called hyperalignment [2, 3]. This way, it is possible to obtain the relevant representation of feared objects by showing them to the surrogate subjects.
 In this work we are interested in finding the features that are important to specific regions of brain (eg. VT and PFC) and how these brain regions share information  and what is the dimension of feature space between theses regions.
 
 
-## Method
+## 2. Method
+### pre-processing of the data-sets
 Functional Magnetic Resonance Imaging (fMRI) technique was used to collect brain scans of 80 subjects while showing them the pictures of 40 different categories including 30 categories of animals (mammals, reptiles, insects, birds, etc), and 10 categories of man-maid objects (hammer, chair, etc). Each category (class) contains 90 different images (eg. dog1 is a different picture from dog2) adding up the total number of pictures to 3600. These picture were shown to each subject in chunks of 2, 3, 4, or, 6 images of the same category. Each chunk of a specific category is called a mini-block (Figure 1) . These data were collected in 6 runs with short breaks for each subject by showing them 600 images in each run. In order to increase the attention to each category, subjects were asked to press a button once a category changed. The order of image presentation was pseudorandomized but fixed across all subjects. Each picture was shown on the screen for 0.98 s and the repetition time (TR) of the scanner was 2 s. Therefore, in each scan two pictures were shown to subjects. This potentially can lead to contamination of the data in such a way that in one TR two images from two different categories were acquired.
 
 ![](/images/1.png)
@@ -28,4 +29,6 @@ As depicted in figure 3, even though by removing the contaminated trials we lose
 ![](/images/contamination.jpg)
 Figure 3.
 
-Due to the contamination in the data, we decided to remove the last trial of the former mini-block just before the change in the category happens.
+Due to the contamination in the data, the last trial of the former mini-block, just before the change in the category happens, was removed. In addition to that we had some none informative features in the voxel activities of VT and PFC (features with zero values that are considered non informative) that were removed from data-sets.
+
+### Network architecture
