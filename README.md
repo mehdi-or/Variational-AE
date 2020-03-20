@@ -51,14 +51,24 @@ figure5.
 A cononical correlation analysis (CCA) with 20 components (the same number of feature in the bottleneck) was used to in order to evaluate the performance of this netwrok. As it can be seen in figure 6, the correlation of of the predicted PFC of the same trial is much lower (about 0.29). The mean value of the correlation between the actual vs predicted values, using CCA, was approximately 0.25 which was significantly lower than our noble network architecture which was approximately 0.65. These result shows that the performance of the VAEs-classifier network is better than CCA.
 
 ![](/images/Figure_7.png)
-figure6.
+figure 6.
 
 Despite of using a linear activation function in the output of VAEs, it seems that the network cannot follow the extreme values of VT and PFC. As it is depicted it figure 7, it appears that the network is treating the values that are more than 2 standard-deviation above the mean as noise.
  
 ![](/images/Figure_2.png)
-figure7.
+figure 7.
 
-Figure 8. shows the predicted and actual values of the same trial. It can be seen that prediction is following the same trend as the actual values.
+Figure 8. shows the predicted and actual values of the same trial. It can be seen that prediction is following the same trend as the actual values. This plot also shows that the network has difficulties in predicting the values that are far from the mean.
 
 ![](/images/Figure_1_2.png)
-figure7.
+figure 8.
+
+In order to see if there has been any correlation between that voxel activities of VT and PFC between different trials of the same class, the average of the Pearson for all trial was calculated for VT and PFC. Figure 9 shows that there is almost no correlation between different trials of the same class. This is probably due to the fact the dimensionality of the VT and PFC are very high and the signal to noise (SNR) is low.
+
+![](/images/Figure_4.png)
+figure 9.
+
+By looking at the features in the bottleneck only, it is expected that the network is picking the most relevant features and that may reveal some similarities between different trails of the same class. Figure 10. depicts that the average correlation within the same class is between 2 to 3 times more than the average correlation between the different classes.
+
+![](/images/Figure_6.png)
+figure 10.
