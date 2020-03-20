@@ -71,3 +71,8 @@ figure 9.
 By looking at the features in the bottleneck only, it is expected that the network is picking the most relevant features and that may reveal some similarities between different trails of the same class. Figure 10. depicts that the average correlation within the same class is between 2 to 3 times more than the average correlation between the different classes.
 
 ![](/images/Figure_6.png) figure 10.
+
+## 4.Future direction
+The next stage is to find the similarity matrix of the all of the classes (40x40 matrix) and inversion to what degree each class is similar/dis-similar to the other in respect to the ground truth (correlation between a class and all other classes).
+
+Finally, we can use TSNE to reduce the dimension of the feature space in the bottleneck, and use an unsupervised classifier like hierarchical clustering models to visualize the clustering pattern of this dataset. 
