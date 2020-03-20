@@ -75,4 +75,10 @@ By looking at the features in the bottleneck only, it is expected that the netwo
 ## 4.Future direction
 The next stage is to find the similarity matrix of the all of the classes (40x40 matrix) and inversion to what degree each class is similar/dis-similar to the other in respect to the ground truth (correlation between a class and all other classes).
 
-Finally, we can use TSNE to reduce the dimension of the feature space in the bottleneck, and use an unsupervised classifier like hierarchical clustering models to visualize the clustering pattern of this dataset. 
+Finally, we can use TSNE to reduce the dimension of the feature space in the bottleneck, and use an unsupervised classifier like hierarchical clustering models to visualize the clustering pattern of this data-set. 
+
+## 5.References
+
+1.	Taschereau-Dumouchel, V., et al., Towards an unconscious neural reinforcement intervention for common fears. Proceedings of the National Academy of Sciences, 2018. 115(13): p. 3470-3475.
+2.	Guntupalli, J.S., et al., A model of representational spaces in human cortex. Cerebral cortex, 2016. 26(6): p. 2919-2934.
+3.	Haxby, J.V., et al., A common, high-dimensional model of the representational space in human ventral temporal cortex. Neuron, 2011. 72(2): p. 404-416.
