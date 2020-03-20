@@ -52,3 +52,13 @@ A cononical correlation analysis (CCA) with 20 components (the same number of fe
 
 ![](/images/Figure_7.png)
 figure6.
+
+Despite of using a linear activation function in the output of VAEs, it seems that the network cannot follow the extreme values of VT and PFC. As it is depicted it figure 7, it appears that the network is treating the values that are more than 2 standard-deviation above the mean as noise.
+ 
+![](/images/Figure_2.png)
+figure7.
+
+Figure 8. shows the predicted and actual values of the same trial. It can be seen that prediction is following the same trend as the actual values.
+
+![](/images/Figure_1_2.png)
+figure7.
