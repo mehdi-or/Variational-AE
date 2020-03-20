@@ -70,5 +70,4 @@ figure 9.
 
 By looking at the features in the bottleneck only, it is expected that the network is picking the most relevant features and that may reveal some similarities between different trails of the same class. Figure 10. depicts that the average correlation within the same class is between 2 to 3 times more than the average correlation between the different classes.
 
-![](/images/Figure_6.png)
-figure 10.
+![](/images/Figure_6.png) figure 10.
